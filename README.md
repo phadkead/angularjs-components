@@ -1,4 +1,5 @@
 Insert data to mongodb
+
 db.player.insert(
 [{
         "_id" : ObjectId("59526236fdcd520dd8306b78"),
