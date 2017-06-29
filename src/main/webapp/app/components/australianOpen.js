@@ -81,9 +81,9 @@ function PlayerDetailComponent(playerService) {
     console.log("routerOnActivate")
     // Get the player identified by the route parameter
     var id = next.params.id;
-    playerService.getPlayer(id).then(function(player) {
+    playerService.getPlayer(id).then(function(response) {
       
-      $ctrl.player = player;
+      $ctrl.player = response.data;
        console.log("getting player details" + $ctrl.player.name);
     });
   };

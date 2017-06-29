@@ -23,4 +23,5 @@
 	    {path: '/australianOpen/...', name: 'Australian Open', component: 'australianOpen'}
   	  ]
 	})
+
 })(window.angular);
