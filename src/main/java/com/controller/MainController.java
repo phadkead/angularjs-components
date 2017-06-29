@@ -2,6 +2,7 @@ package com.controller;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +26,9 @@ public class MainController {
 		return repository.findAll();
 	}
 	
-	@RequestMapping(value="/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Player getPlayer(@PathVariable String name){
-		return repository.findByName(name);
+	@RequestMapping(value="/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Player getPlayer(@PathVariable String id){
+		return repository.findById(new ObjectId(id));
 	}
 	
 }

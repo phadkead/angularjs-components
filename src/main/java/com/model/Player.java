@@ -2,7 +2,14 @@ package com.model;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
 public class Player {
+	
+	@Id
+	private ObjectId id;
+	
 	private String name;
 
 	private List<String> tournaments;
@@ -43,6 +50,13 @@ public class Player {
 		this.upVotes = upVotes;
 	}
 
+	public String getId() {
+	    return id.toString();
+	}
+	public void setId(String id) {
+	    this.id = new ObjectId(id);
+	}
+	
 	@Override
 	public String toString() {
 		return "Player [name=" + name + ", tournaments=" + tournaments + ", noOfMatchesPLayed=" + noOfMatchesPLayed

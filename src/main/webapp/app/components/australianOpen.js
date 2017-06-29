@@ -15,7 +15,7 @@
 	.component('playersList', {
   		template:
     		' <div ng-repeat="player in $ctrl.players">\n' +
-      		'<a ng-link="[\'PlayersList\', {id: player.id}]">{{player.name}}</a>\n' +
+      		'<a ng-link="[\'PlayersDetail\', {id: player.id}]">{{player.name}}</a>\n' +
     		'</div>',        
       bindings: { $router: '<' },
   		controller: PlayerListComponent
@@ -37,27 +37,18 @@
     controller: PlayerDetailComponent
   });
 
-  function PlayerService($q) {
-  var playersPromise = $q.resolve([
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' }
-  ]);
-
+  function PlayerService($http) {
+  
+  
   this.getPlayers = function() {
-     console.log("initializing players")
-    return playersPromise;
+     console.log("initializing players");
+     var playersPromise =  $http.get("http://localhost:8080/players/");
+     return playersPromise;
   };
 
-   this.getPlayer = function(id) {
-    return playersPromise.then(function(players) {
-      for (var i = 0; i < players.length; i++) {
-        if (players[i].id === id) return players[i];
-      }
-    });
+  this.getPlayer = function(id) {
+     var playerDetailPromise =  $http.get("http://localhost:8080/players/" + id);
+     return playerDetailPromise;    
   };
 }
 
@@ -69,10 +60,12 @@ function PlayerListComponent(playerService) {
   this.$routerOnActivate = function(next) {
     // Load up the players for this view
     console.log("routerOnActivate")
-    playerService.getPlayers().then(function(players) {
+    playerService.getPlayers().then(function(response) {
       console.log("Getting players")
-      $ctrl.players = players;
-      selectedId = next.params.id;
+      $ctrl.players = response.data;
+      //selectedId = next.params.id;
+    }, function myError(response) {
+        alert("error");
     });
   };
 
@@ -89,8 +82,9 @@ function PlayerDetailComponent(playerService) {
     // Get the player identified by the route parameter
     var id = next.params.id;
     playerService.getPlayer(id).then(function(player) {
-       console.log("getting player details")
+      
       $ctrl.player = player;
+       console.log("getting player details" + $ctrl.player.name);
     });
   };
 
