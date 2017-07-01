@@ -12,4 +12,6 @@ public interface PlayerRepository extends MongoRepository<Player, Serializable> 
 	public Player findByName(String name);
 
 	public Player findById(ObjectId id);
+	
+	public List<Player> findBytournaments(String tournament);
 }

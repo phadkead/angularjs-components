@@ -32,4 +32,9 @@ public class MainController {
 		return repository.findById(new ObjectId(id));
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Player> getAllPlayersByTournamentPlayed(@RequestParam String tournament){
+		return repository.findBytournaments(tournament);
+	}
+	
 }
