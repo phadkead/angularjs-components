@@ -21,19 +21,20 @@ public class MainController {
 	@Autowired
 	PlayerRepository repository;
 	
+	
 	@RequestMapping(value="/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Player> getAllPlayers(){
 		return repository.findAll();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Player> getAllPlayersByTournamentPlayed(@RequestParam String tournament){
-		return repository.findBytournaments(tournament);
-	}
-	
 	@RequestMapping(value="/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Player getPlayer(@PathVariable String id){
 		return repository.findById(new ObjectId(id));
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Player> getAllPlayersByTournamentPlayed(@RequestParam String tournament){
+		return repository.findBytournaments(tournament);
 	}
 	
 }

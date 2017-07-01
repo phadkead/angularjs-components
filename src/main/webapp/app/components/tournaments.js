@@ -39,14 +39,31 @@
     controller: PlayerDetailComponent
   });  
 
+  function PlayerService($http) {
+  
+  
+  this.getPlayers = function() {
+     console.log("initializing players");
+     var playersPromise =  $http.get("http://localhost:8080/players/");
+     return playersPromise;
+  };
+
+  this.getPlayer = function(id) {
+     var playerDetailPromise =  $http.get("http://localhost:8080/players/" + id);
+     return playerDetailPromise;    
+  };
+}
+
 
 function PlayerListComponent(playerService) {
   var selectedId = null;
   var $ctrl = this;
 
-  this.$routerOnActivate = function(next) {
+  this.$routerOnActivate = function() {
     // Load up the players for this view
-    playerService.getPlayers().then(function(response) {     
+    console.log("routerOnActivate")
+    playerService.getPlayers().then(function(response) {
+      console.log("Getting players")
       $ctrl.players = response.data;
       //selectedId = next.params.id;
     }, function myError(response) {
@@ -66,7 +83,7 @@ function PlayerDetailComponent(playerService) {
     console.log("routerOnActivate")
     // Get the player identified by the route parameter
     var id = next.params.id;
-    playerService.getPlayerById(id).then(function(response) {
+    playerService.getPlayer(id).then(function(response) {
       
       $ctrl.player = response.data;
        console.log("getting player details" + $ctrl.player.name);

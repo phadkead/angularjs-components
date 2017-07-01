@@ -2,7 +2,7 @@
 //1. create module
 (function (angular) {
 	'use strict';
-	angular.module('app', ['ngComponentRouter', 'tournaments'])
+	angular.module('app', ['ngComponentRouter', 'tournaments','results'])
 		//2. declare that my locationProvider will be HTML5. so it will create # based values
 		.config(function ($locationProvider) {
 			$locationProvider.html5Mode(true);
@@ -14,8 +14,8 @@
 			templateUrl: '/app/views/tabs.html',
 			$routeConfig: [
 				// ... means they will have child components
-				{ path: '/Tournaments/...', name: 'Tournaments', component: 'tournaments' }
+				{ path: '/Tournaments/...', name: 'Tournaments', component: 'tournaments' },
+				{ path: '/Results/...', name: 'Results', component: 'results' }
 			]
-		})
-
+		});
 })(window.angular);
