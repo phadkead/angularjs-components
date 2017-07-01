@@ -1,21 +1,23 @@
 
 (function(angular) {
   'use strict';
-  angular.module('australianOpen', [])
+  angular.module('tournaments', [])
 	.service('playerService',PlayerService)
-	.component( 'australianOpen', {
-			template: '<h2> Australian Open <h2><ng-outlet> </ng-outlet>',
+	.component( 'tournaments', {
+			templateUrl: '/app/views/tournaments.html', //TODO: dynamic title
 			$routeConfig: [
 			//if no other Route Definition matches the URL, then this Route Definition should be used by default
 				{path: '/',    name: 'PlayersList',   component: 'playersList', useAsDefault: true},
 				//match id as part of its path property
     			{path: '/:id', name: 'PlayersDetail', component: 'playerDetail'}
-			]
+			],
+      controller : TournamentsController
+
 		})
 	.component('playersList', {
   		template:
     		' <div ng-repeat="player in $ctrl.players">\n' +
-      		'<a ng-link="[\'PlayersList\', {id: player.id}]">{{player.name}}</a>\n' +
+      		'<a ng-link="[\'PlayersDetail\', {id: player.id}]">{{player.name}}</a>\n' +
     		'</div>',        
       bindings: { $router: '<' },
   		controller: PlayerListComponent
@@ -35,31 +37,7 @@
       '</div>\n',
     bindings: { $router: '<' },
     controller: PlayerDetailComponent
-  });
-
-  function PlayerService($q) {
-  var playersPromise = $q.resolve([
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' }
-  ]);
-
-  this.getPlayers = function() {
-     console.log("initializing players")
-    return playersPromise;
-  };
-
-   this.getPlayer = function(id) {
-    return playersPromise.then(function(players) {
-      for (var i = 0; i < players.length; i++) {
-        if (players[i].id === id) return players[i];
-      }
-    });
-  };
-}
+  });  
 
 
 function PlayerListComponent(playerService) {
@@ -68,11 +46,11 @@ function PlayerListComponent(playerService) {
 
   this.$routerOnActivate = function(next) {
     // Load up the players for this view
-    console.log("routerOnActivate")
-    playerService.getPlayers().then(function(players) {
-      console.log("Getting players")
-      $ctrl.players = players;
-      selectedId = next.params.id;
+    playerService.getPlayers().then(function(response) {     
+      $ctrl.players = response.data;
+      //selectedId = next.params.id;
+    }, function myError(response) {
+        alert("error");
     });
   };
 
@@ -88,16 +66,17 @@ function PlayerDetailComponent(playerService) {
     console.log("routerOnActivate")
     // Get the player identified by the route parameter
     var id = next.params.id;
-    playerService.getPlayer(id).then(function(player) {
-       console.log("getting player details")
-      $ctrl.player = player;
+    playerService.getPlayerById(id).then(function(response) {
+      
+      $ctrl.player = response.data;
+       console.log("getting player details" + $ctrl.player.name);
     });
   };
 
-  this.gotoPlayeres = function() {
-    console.log("gotoPlayeres")
+  this.gotoPlayers = function() {
+    console.log("gotoPlayers")
     var playerId = this.player && this.player.id;
-    this.$router.navigate(['PlayerList', {id: playerId}]);
+    this.$router.navigate(['PlayersList', {id: playerId}]);
   };
 }
 })(window.angular);
