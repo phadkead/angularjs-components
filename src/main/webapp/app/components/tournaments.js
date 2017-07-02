@@ -15,10 +15,7 @@
 
 		})
 	.component('playersList', {
-  		template:
-    		' <div ng-repeat="player in $ctrl.players">\n' +
-      		'<a ng-link="[\'PlayersDetail\', {id: player.id}]">{{player.name}}</a>\n' +
-    		'</div>',        
+  		templateUrl:'/app/views/playerList.html',        
       bindings: { $router: '<' },
   		controller: PlayerListComponent
 	})
