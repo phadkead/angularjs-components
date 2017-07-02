@@ -1,0 +1,4 @@
+<nav ng-repeat="tournament in $ctrl.tournaments">
+    <a ng-link="['PlayersList', {type: tournament}]">{{tournament}}</a>
+</nav>  
+<ng-outlet></ng-outlet>

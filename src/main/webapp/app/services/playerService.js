@@ -1,18 +1,24 @@
 
-
 function PlayerService($http) {
-    this.getPlayers = function() {
-      var playersPromise =  $http.get("http://localhost:8080/players/");
+
+    this.getPlayers = function () {
+      console.log("initializing players");
+      var playersPromise = $http.get("/players/");
       return playersPromise;
     };
 
-    this.getPlayerById = function(id) {
-      var playerDetailPromise =  $http.get("http://localhost:8080/players/" + id);
-      return playerDetailPromise;    
+    this.getPlayer = function (id) {
+      var playerDetailPromise = $http.get("/players/" + id);
+      return playerDetailPromise;
     };
+    
+    this.getTournaments = function() {
+      var tournamentsListPromise = $http.get("/players/tournaments");
+      return tournamentsListPromise;
+    }
 
     this.getPlayersByTournament = function(tournament) {
-      var playerDetailPromise =  $http.get("http://localhost:8080/players?tournament=" + tournament);
-      return playerDetailPromise;    
-    };
+      var playersListPromise = $http.get("/players/tournaments/"+ tournament) ;
+      return playersListPromise;
+    }
 }

@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,18 @@ public class MainController {
 	
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Player> getAllPlayersByTournamentPlayed(@RequestParam String tournament){
-		return repository.findBytournaments(tournament);
+		return repository.findByTournaments(tournament);
 	}
 	
+	@RequestMapping(value="/tournaments",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<String> getAllTournaments(){
+		return repository.findAll().stream().flatMap(player -> player.getTournaments().stream()).distinct().collect(Collectors.toList());
+	}
+	
+
+	@RequestMapping(value="/tournaments/{tournament}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Player> getAllPlayersByTournaments(@PathVariable String tournament){
+		return repository.findByTournaments(tournament);
+	}
 }
+

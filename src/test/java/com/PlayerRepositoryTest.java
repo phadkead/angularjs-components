@@ -17,7 +17,7 @@ public class PlayerRepositoryTest {
 	
 	@Test
 	public void test(){
-		System.out.println(playerRepository.findBytournaments("Wimbeldon").size());
+		System.out.println(playerRepository.findByTournaments("Wimbeldon").size());
 	}
 	
 }

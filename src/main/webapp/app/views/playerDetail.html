@@ -1,0 +1,15 @@
+<div ng-if="$ctrl.player">
+    <h3>"{{$ctrl.player.name}}"</h3>
+    <div>
+        <label>Id: </label>{{$ctrl.player.id}}</div>
+    <div>
+        <label>Name: </label>
+        <input ng-model="$ctrl.player.name" placeholder="name" />
+    </div>
+    <div>
+        <label>Total Votes: </label>
+        <input ng-model="$ctrl.player.upVotes" placeholder="upVotes" />
+    </div>
+    <button ng-click="$ctrl.gotoPlayers()">Back</button>
+     <button ng-click="Save">Save</button>
+</div>
