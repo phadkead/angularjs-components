@@ -1,7 +1,4 @@
 */target/**
-*/target/*
-*/target/
-/target/angularjs-with-components-0.0.1-SNAPSHOT/WEB-INF/classes/*
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -25,3 +22,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/target/
