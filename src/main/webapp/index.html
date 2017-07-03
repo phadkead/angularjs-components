@@ -2,6 +2,7 @@
 <head>	
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+	<link rel="stylesheet" href="style.css">
   	<!-- AngularJS Material Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-animate.min.js"></script>
@@ -20,8 +21,13 @@
   	</script>
 </head>
 <body ng-app="app">
-	<h1 class="title">Vote for Your Favourite Players</h1>
-  	<app></app>
+	<div layout="row" layout-align="center center">
+		<md-toolbar class="md-tall md-accent">
+			<h1 class="md-toolbar-tools">Vote for Your Favourite Players</h1>  		
+		 </md-toolbar>
+	</div>
+	<app></app>
+	  
 <!--<script src="https://unpkg.com/@angular/router@0.2.0/angular1/angular_1_router.js"></script>-->
 </body>
 </html>

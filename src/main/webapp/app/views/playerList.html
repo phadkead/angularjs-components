@@ -1,5 +1,27 @@
 
-
+<!--
 <div ng-repeat="player in $ctrl.players">
     <a ng-link="['PlayersDetail', {id: player.id}]">{{player.name}}</a>
+</div>-->
+
+
+<div>
+
+<md-content flex>
+
+    <md-list>
+
+      <md-list-item class="md-3-line" ng-repeat="player in $ctrl.players">
+        <!--<img ng-src="{{item.face}}" alt="{{item.who}}" class="md-avatar">-->
+
+        <div class="md-list-item-text">
+          <a ng-link="['PlayersDetail', {id: player.id}]">{{player.name}}</a>
+        </div>
+        <md-divider inset></md-divider>
+      </md-list-item>
+
+    </md-list>
+
+  </md-content>
+
 </div>
