@@ -2,7 +2,7 @@
 //1. create module
 (function(angular) {
    'use strict';
-	angular.module('app', ['ngComponentRouter','australianOpen'])
+	angular.module('app', ['ngMaterial','ngAria','ngComponentRouter','australianOpen'])
 //2. declare that my locationProvider will be HTML5. so it will create # based values
 	.config(function($locationProvider) {
 	  $locationProvider.html5Mode(true);
