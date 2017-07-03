@@ -1,4 +1,4 @@
-target/
+*/target/**
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -6,7 +6,7 @@ target/
 .classpath
 .factorypath
 .project
-.settings
+
 .springBeans
 
 ### IntelliJ IDEA ###
@@ -22,3 +22,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/target/
+
+.settings/
+target/
