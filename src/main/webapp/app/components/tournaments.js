@@ -12,9 +12,7 @@
         { path: '/type/:type', name: 'PlayersList', component: 'playersList' },
         //match id as part of its path property
         { path: '/:id', name: 'PlayersDetail', component: 'playerDetail' }
-      ],
-      controller: TournamentsController
-
+      ]
     })
 
     .component('tournamentsList', {

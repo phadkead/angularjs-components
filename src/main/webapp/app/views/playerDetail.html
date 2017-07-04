@@ -1,15 +1,28 @@
-<div flex ng-if="$ctrl.player">
-    <h3>"{{$ctrl.player.name}}"</h3>
-    <div>
-        <label>Id: </label>{{$ctrl.player.id}}</div>
-    <div>
+<div layout="column" layout-padding ng-if="$ctrl.player">
+    <h1>{{$ctrl.player.name}}</h1>
+    <div flex>
         <label>Name: </label>
         <input ng-model="$ctrl.player.name" placeholder="name" />
     </div>
-    <div>
+    <div flex>
+        <label>Total Matches Played: </label>
+        <input ng-model="$ctrl.player.noOfMatchesPLayed" placeholder="noOfMatchesPLayed" />
+    </div>
+    <div flex>
+        <label>Tournaments: </label>
+        <md-chips ng-model="$ctrl.player.tournaments" name="tournament">
+            <md-chip>
+                <strong>{{$tournament}}</strong>
+                <em>{{$tournament}}</em>
+            </md-chip>
+        </md-chips>
+    </div>
+    <div flex>
         <label>Total Votes: </label>
         <input ng-model="$ctrl.player.upVotes" placeholder="upVotes" />
     </div>
-    <button ng-click="$ctrl.gotoPlayers()">Back</button>
-     <button ng-click="Save">Save</button>
+    <div flex>
+        <md-button class="md-raised" ng-click="$ctrl.gotoPlayers()">Back</md-button>
+        <md-button class="md-raised" ng-click="Save">Save</md-button>
+    </div>
 </div>
