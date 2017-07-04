@@ -1,6 +1,5 @@
 .navBardemoBasicUsage md-content .ext-content {
-  padding: 50px;
-  margin: 20px;
+ 
   background-color: #FFF2E0; }
 
 .gridListdemoBasicUsage md-grid-list {
@@ -17,22 +16,18 @@
   background: #b388ff; }
 .gridListdemoBasicUsage .red {
   background: #ff8a80; }
-.gridListdemoBasicUsage md-grid-tile {
-  transition: all 400ms ease-out 50ms; }
 
+
+md-grid-list {
+  display: flex !important;
+  flex-wrap: wrap;
+}
 
 md-grid-tile {
-  
-  background: #ccc;
   position: relative !important;
   left: auto !important;
   right: auto !important;
   width: calc(((33.3333% - 1.33333px) * 1) - 1px) !important;
   top: auto !important;
- 
-}
-
-md-grid-list {
-  display: flex !important;
-  flex-wrap: wrap;
+  margin: 10px !important;
 }
