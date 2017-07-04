@@ -1,7 +1,22 @@
 
-<div>    
+<!--<div>    
 <nav ng-repeat="tournament in $ctrl.tournaments">
     <a ng-link="['PlayersList', {type: tournament}]">{{tournament}}</a>
 </nav>
 </div>  
+https://jsfiddle.net/d8zsoed8/16/
 <ng-outlet></ng-outlet>
+<div>  -->
+<div flex  class="gridListdemoBasicUsage">
+ <md-grid-list layout-align="center center" ng-repeat="tournament in $ctrl.tournaments" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" >
+
+    <md-grid-tile class="green" ng-link="['PlayersList', {type: tournament}]">
+      <h2>{{tournament}}</h2>
+      <md-grid-tile-footer>        
+        <h3>{{tournament}}</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+  </md-grid-list>
+</div>
+  <ng-outlet></ng-outlet>
