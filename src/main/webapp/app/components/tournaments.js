@@ -79,6 +79,7 @@
         $ctrl.tournaments = response.data;
         $ctrl.tournamentsData = [];
         $ctrl.tournaments.forEach(function(element) {
+          console.log(element)
           var image = '/app/img/'+element +'.jpg';
           var data = {};
           data.name = element;

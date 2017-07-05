@@ -31,3 +31,28 @@ md-grid-tile {
   top: auto !important;
   margin: 10px !important;
 }
+
+figure img {
+   cursor: pointer;
+   height: 90%;
+   width: 90%;
+    -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+} 
+
+igcaption:hover div{
+  opacity: 1;
+  top: 0;
+}
+
+figcaption:hover div:after{
+  width: 50%;
+}
+
+figure:hover img{
+  -webkit-transform: scale3d(1.2, 1.2, 1);
+          transform: scale3d(1.2, 1.2, 1);
+}
