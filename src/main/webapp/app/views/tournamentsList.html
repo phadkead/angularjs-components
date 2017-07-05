@@ -10,10 +10,10 @@
         md-row-height-xs="110px" md-gutter-gt-md="15px" md-gutter="5px" layout-align="center center">
         <md-grid-tile ng-repeat="tournament in $ctrl.tournamentsData" class="grey" ng-link="['PlayersList', {type: tournament.name}]"
             layout-align="center center">
-            <div>                
+            <div>
                 <figure>
                     <img ng-src="{{tournament.image}}" alt="beer" layout-align="center center">
-                </figure>                
+                </figure>
                 <md-grid-tile-footer>
                     <h3>{{tournament.name}}</h3>
                 </md-grid-tile-footer>
