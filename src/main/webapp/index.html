@@ -1,4 +1,5 @@
 <html>
+
 <head>
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
@@ -15,7 +16,7 @@
 	<script src="app/components/results.js"></script>
 	<script src="app/services/playerService.js"></script>
 	<script src="app/components/tournaments.js"></script>
-	
+
 	<script type="text/javascript">
 		angular.element(document.getElementsByTagName('head')).
 			append(angular.element('<base href="' + window.location.pathname + '" />'));
@@ -24,8 +25,11 @@
 
 <body ng-app="app">
 	<div layout="row" layout-align="center center">
-		<md-toolbar class="md-tall md-accent">
-			<h1 class="md-toolbar-tools">Vote for Your Favourite Players</h1>
+		<md-toolbar class="md-tall md-hue-2">
+			<span>
+			   <h2 class="md-display-1">Vote for Your Favourite Players</h2>
+			</span>
+			<!--<h1 class="md-display-3">Vote for Your Favourite Players</h1>-->
 		</md-toolbar>
 	</div>
 	<app></app>
