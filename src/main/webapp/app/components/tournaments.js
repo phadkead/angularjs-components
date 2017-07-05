@@ -77,6 +77,14 @@
     this.$routerOnActivate = function () {
       playerService.getTournaments().then(function (response) {
         $ctrl.tournaments = response.data;
+        $ctrl.tournamentsData = [];
+        $ctrl.tournaments.forEach(function(element) {
+          var image = '/app/img/'+element +'.jpg';
+          var data = {};
+          data.name = element;
+          data.image = image;
+          $ctrl.tournamentsData.push(data);
+        }, this);
       }, function myError(response) {
         alert("error");
       });

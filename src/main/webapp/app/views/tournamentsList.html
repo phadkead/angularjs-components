@@ -8,12 +8,13 @@
 <div class="container gridListdemoBasicUsage">
     <md-grid-list md-cols-gt-md="5" md-cols-md="4" md-cols-sm="6" md-cols="4" md-cols-xs="2" md-row-height-gt-md="1:1" md-row-height="1:1"
             md-row-height-xs="110px" md-gutter-gt-md="15px" md-gutter="5px" layout-align="center center">
-        <md-grid-tile ng-repeat="tournament in $ctrl.tournaments" class="purple" 
-            ng-link="['PlayersList', {type: tournament}]">
+        <md-grid-tile ng-repeat="tournament in $ctrl.tournamentsData" class="purple" 
+            ng-link="['PlayersList', {type: tournament.name}]">
             <div>
-                <h2>{{tournament}}</h2>
+                
+                <img ng-src="{{tournament.image}}" alt="beer" layout-align="center center">
                 <md-grid-tile-footer>
-                    <h3>{{tournament}}</h3>
+                    <h3>{{tournament.name}}</h3>
                 </md-grid-tile-footer>
             </div>
         </md-grid-tile>
