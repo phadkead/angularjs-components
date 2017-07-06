@@ -16,9 +16,10 @@
             </h3>
             <p>Total Matches Played: {{player.noOfMatchesPLayed}} </p>
           </div>
-          <md-button class="md-fab" aria-label="Vote Up!">
-            <i class="material-icons md-24 md-dark">thumb_up</i>
-          </md-button>
+          <md-button class="md-fab" aria-label="Vote Up!" ng-click="$ctrl.upvotePlayer(player)">
+            <i class="material-icons md-24 md-dark" >thumb_up</i>
+          </md-button>          
+         <span class="md-caption" layout-align="center center">Total Votes: {{player.upVotes}} </span>
           <!--<md-divider inset></md-divider>-->
           <md-divider></md-divider>
         </md-list-item>

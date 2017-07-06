@@ -49,6 +49,15 @@
     this.isSelected = function (player) {
       return (player.id === selectedId);
     };
+    this.upvotePlayer = function (player) {
+      console.log("Upvoted player:" + player)
+      playerService.upvotePlayer(player).then(function (response) {
+        alert("upvoted");
+        player.upVotes = response.player.upVotes;
+      }, function myError(response) {
+        alert("error");
+      });;
+    };
   }
 
   function PlayerDetailComponent(playerService) {
@@ -78,9 +87,9 @@
       playerService.getTournaments().then(function (response) {
         $ctrl.tournaments = response.data;
         $ctrl.tournamentsData = [];
-        $ctrl.tournaments.forEach(function(element) {
+        $ctrl.tournaments.forEach(function (element) {
           console.log(element)
-          var image = '/app/img/'+element +'.jpg';
+          var image = '/app/img/' + element + '.jpg';
           var data = {};
           data.name = element;
           data.image = image;

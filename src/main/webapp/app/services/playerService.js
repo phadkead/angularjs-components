@@ -21,4 +21,12 @@ function PlayerService($http) {
       var playersListPromise = $http.get("/players/tournaments/"+ tournament) ;
       return playersListPromise;
     }
+
+    this.upvotePlayer = function(player){
+      return  $http({
+        url: '/players/upvote/',
+        method: "POST",
+        data: player
+      }) ;
+    }
 }
