@@ -18,7 +18,7 @@ public class Player {
 	private int noOfMatchesPLayed;
 
 	private int upVotes;
-
+	
 	public String getName() {
 		return name;
 	}

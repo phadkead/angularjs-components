@@ -27,8 +27,7 @@
     })
 
     .component('playerDetail', {
-      templateUrl:
-      '/app/views/playerDetail.html',
+      templateUrl: '/app/views/playerDetail.html',
       bindings: { $router: '<' },
       controller: PlayerDetailComponent
     });
@@ -37,6 +36,7 @@
   function PlayerListComponent(playerService) {
     var selectedId = null;
     var $ctrl = this;
+    //var buttonCssClass = 'material-icons md-24 md-dark';
 
     this.$routerOnActivate = function (next) {
       var type = next.params.type;
@@ -53,7 +53,8 @@
       console.log("Upvoted player:" + player)
       playerService.upvotePlayer(player).then(function (response) {
         alert("upvoted");
-        player.upVotes = response.player.upVotes;
+        player.upVotes = response.data.upVotes;
+        player.isUpVoted = true;
       }, function myError(response) {
         alert("error");
       });;

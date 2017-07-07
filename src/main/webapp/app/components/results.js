@@ -4,7 +4,7 @@
   angular.module('results', [])
 	//.service('playerService',PlayerService)
 	.component( 'results', {
-			templateUrl: '/app/views/results.html', //TODO: dynamic title
+			templateUrl: '/app/views/results.html',
 			$routeConfig: [
 			//if no other Route Definition matches the URL, then this Route Definition should be used by default
 				{path: '/',    name: 'ResultVotes',   component: 'resultVotes', useAsDefault: true}
