@@ -39,51 +39,62 @@
 
 // component testing way
 describe('PlayerListComponent controller', function () {
-  var $rootScope, $q, $componentController, controller, PlayerService;
-  
+  var $rootScope, $q, $componentController, controller, playerService;
+  var deferred;
   beforeEach(module('app', 'tournaments', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngComponentRouter', 'tournaments', 'results'));
-  
+  dump(10)
   beforeEach(inject(function ($injector) {
     $rootScope = $injector.get('$rootScope');
     $q = $injector.get('$q');
     $componentController = $injector.get('$componentController');
-    PlayerService = $injector.get('playerService');
+    playerService = $injector.get('playerService');
   }));
 
-  it('should call upvote player() while upvoting', function () {
-    it('should upvote player', function () {
-      var player = { $id: 1 }
-      spyOn(PlayerService, 'upvotePlayer').and.returnValue(player);
-      controller = $componentController('playersList',
-        { $scope: {}, PlayerService: PlayerService, $state: $state }
-      );
-      expect(PlayerService.upvotePlayer).toHaveBeenCalled();
-      expect(controller.player.isUpVoted).toEqual(user);
-    });
+
+  it('should upvote player', function () {
+    deferred = $q.defer();
+    deferred.resolve();
+    var promise = deferred.promise;
+    var player = { $id: 1 }
+    spyOn(playerService, 'upvotePlayer').and.returnValue(promise);
+    controller = $componentController('playersList',
+      { $scope: {}, playerService: playerService }
+    );
+    controller.upvotePlayer();
+    expect(playerService.upvotePlayer).toHaveBeenCalled();
+    // expect(controller.player.isUpVoted).toEqual(user);
+    // expect(2 - 3).toEqual(10);
   });
+
 });
 
 describe('PlayerDetailComponent controller', function () {
   var $rootScope, $q, $componentController, controller, PlayerService;
-  
+
   beforeEach(module('app', 'tournaments', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngComponentRouter', 'tournaments', 'results'));
-  
+  let router = {
+    navigate: jasmine.createSpy('navigate')
+  }
   beforeEach(inject(function ($injector) {
     $rootScope = $injector.get('$rootScope');
     $q = $injector.get('$q');
     $componentController = $injector.get('$componentController');
     PlayerService = $injector.get('playerService');
   }));
- //TODO
-  // it('should call upvote player() while upvoting', function () {
-  //   it('should upvote player', function () {
-  //     var player = { $id: 1 }
-  //     spyOn(PlayerService, 'upvotePlayer').and.returnValue(player);
-  //     controller = $componentController('playersList',
-  //       { $scope: {}, PlayerService: PlayerService, $state: $state }
-  //     );
-  //     expect(PlayerService.upvotePlayer).toHaveBeenCalled();
-  //     expect(controller.player.isUpVoted).toEqual(user);
-  //   });
-  // });
+  //TODO
+
+  it('goToPlayers', function () {
+    // var player = { $id: 1 }
+
+    controller = $componentController('playerDetail',
+      { $scope: {}, PlayerService: PlayerService }
+    );
+
+   // dump(router.navigate.)
+    expect(router.navigate).toHaveBeenCalledWith(['/playersList']);
+
+    //expect(PlayerService.upvotePlayer).toHaveBeenCalled();
+    //expect(controller.player.isUpVoted).toEqual(user);
+  });
+
 });
