@@ -14,7 +14,8 @@ This application is an angularjs application which uses MongoDB as database.
 5. MongoDB as database
 
 ## To run locally
-- Clone project and Startup application with mvn spring-boot:run
+- Clone project and Startup application with mvn spring-boot:run 
+
   Application should run at http://localhost:8080/index.html
 - Setup [Karma](https://karma-runner.github.io/0.13/index.html)
 - Start MongoDB on localhost:27017
