@@ -36,9 +36,8 @@
   function PlayerListComponent(playerService) {
     var selectedId = null;
     var $ctrl = this;
-    //var buttonCssClass = 'material-icons md-24 md-dark';
-
-    this.$routerOnActivate = function (next) {
+ 
+    $ctrl.$routerOnActivate = function (next) {
       var type = next.params.type;
       playerService.getPlayersByTournament(type).then(function (response) {
         $ctrl.players = response.data;
@@ -46,11 +45,9 @@
         alert("error");
       });
     };
-    this.isSelected = function (player) {
-      return (player.id === selectedId);
-    };
-    this.upvotePlayer = function (player) {
-      console.log("Upvoted player:" + player)
+   
+
+    $ctrl.upvotePlayer = function (player) {
       playerService.upvotePlayer(player).then(function (response) {
         alert("upvoted");
         player.upVotes = response.data.upVotes;
@@ -76,8 +73,9 @@
 
     this.gotoPlayers = function () {
       console.log("gotoPlayers")
-      var playerId = this.player && this.player.id;
-      this.$router.navigate(['PlayersList', { id: playerId }]);
+      var tournament = this.player && this.player.tournaments[0];
+      console.log(tournament);
+      this.$router.navigate(['PlayersList', { type: tournament }]);
     };
   }
 

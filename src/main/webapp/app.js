@@ -2,7 +2,7 @@
 //1. create module
 (function (angular) {
 	'use strict';
-	angular.module('app', ['ngMaterial','ngAria','ngAnimate','ngComponentRouter', 'tournaments','results'])
+	angular.module('app', ['ngMaterial','ngAria',, 'md.data.table','ngAnimate','ngComponentRouter', 'tournaments','results'])
 		//2. declare that my locationProvider will be HTML5. so it will create # based values
 		.config(function ($locationProvider) {
 			$locationProvider.html5Mode(true);
@@ -37,6 +37,6 @@
     .primaryPalette('indigo')
     .accentPalette('orange')
 	.backgroundPalette('grey') ;
-
+	
 })
 })(window.angular);

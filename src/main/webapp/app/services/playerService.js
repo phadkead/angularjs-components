@@ -11,7 +11,7 @@ function PlayerService($http) {
       var playerDetailPromise = $http.get("/players/" + id);
       return playerDetailPromise;
     };
-    
+
     this.getTournaments = function() {
       var tournamentsListPromise = $http.get("/players/tournaments");
       return tournamentsListPromise;
