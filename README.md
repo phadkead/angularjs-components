@@ -3,6 +3,7 @@
 
 This application is an angularjs application which uses MongoDB as database.
 
+![Tennis gif](tennis.gif "Demo of application")
 ## Technologies Used
 
 1. AngularJS with component router (https://docs.angularjs.org/guide/component-router)
