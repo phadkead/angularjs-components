@@ -3,7 +3,6 @@
 
 This application is an angularjs application which uses MongoDB as database.
 
-![Tennis gif](Tennis.gif "Demo of application")
 ## Technologies Used
 
 1. AngularJS with component router (https://docs.angularjs.org/guide/component-router)
@@ -13,6 +12,10 @@ This application is an angularjs application which uses MongoDB as database.
 3. Test spec with Jasmine and Karma        
 4. Spring Boot with REST
 5. MongoDB as database
+
+
+### Demo
+![Tennis gif](Tennis.gif "Demo of application")
 
 ## To run locally
 - Clone project and Startup application with mvn spring-boot:run 
